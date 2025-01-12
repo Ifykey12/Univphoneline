@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyEarn Online with Tasks</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-image: url('https://i.postimg.cc/Jtd62qnK/crypto-background.png'); /* Updated background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        #tapButton {
+            width: 150px;
+            height: 150px;
+            background-image: url('https://i.postimg.cc/wyXGQgYM/coin2.png');
+            background-size: cover;
+            background-position: center;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.1s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #tapButton:active {
+            transform: scale(0.95);
+        }
+
+        #score {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #e9ffdb;
+        }
+
+        #totalCoinsDisplay {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #c7f9cc;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #buttonContainer button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #40916c;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        #buttonContainer button:hover {
+            background-color: #52b788;
+        }
+
+        /* New Task List Style */
+        #taskList {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+
+        #taskList li {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #taskList li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #taskList li span {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        #taskList li button {
+            font-size: 16px;
+            color: white;
+            background-color: #40916c;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #taskList li button:hover {
+            background-color: #52b788;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        h1 {
+            color: #e9ffdb;
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>EasyEarn Online</h1>
+    <div id="totalCoinsDisplay">Total Coins: 0</div>
+
+    <!-- Button navigation for Tap Game and Task Dashboard -->
+    <div id="buttonContainer">
+        <button id="showGame">Play Game</button>
+        <button id="showTasks">Task Dashboard</button>
+    </div>
+
+    <!-- Game Section (Tap Game Dashboard) -->
+    <div id="gameSection" class="visible">
+        <button id="tapButton"></button>
+        <div id="score">Score: 0</div>
+    </div>
+
+    <!-- Task Section (Task Dashboard) -->
+    <div id="taskSection" class="hidden">
+        <h2 style="color: #e9ffdb;">Tasks</h2>
+        <ul id="taskList">
+            <li>
+                <span>Follow Channel</span>
+                <button data-coins="500" onclick="completeTask(this, 'https://t.me/+HDvREC8WPWhkMGE0')">Task</button>
+            </li>
+            <li>
+                <span>Follow Channel</span>
+                <button data-coins="300" onclick="completeTask(this, 'https://t.me/+9khw5dnu0VdkY2Rk')">Task</button>
+            </li>
+            <li>
+                <span>Follow Channel</span>
+                <button data-coins="200" onclick="completeTask(this, 'https://t.me/+S1-QwBGk2RU1OGZk')">Task</button>
+            </li>
+            <li>
+                <span>Follow Channel</span>
+                <button data-coins="400" onclick="completeTask(this, 'https://t.me/+c858dkoJvu05OTM8')">Task</button>
+            </li>
+            <li>
+                <span>Subcribe</span>
+                <button data-coins="200" onclick="completeTask(this, 'https://youtube.com/@tradingschool3232?si=vWYq-mMnCiUbYExH')">Task</button>
+            </li>
+            <li>
+                <span>Subcribe</span>
+                <button data-coins="200" onclick="completeTask(this, 'https://youtube.com/@elayefa_online_insights?si=i-UZAd9PeYJqkv3E')">Task</button>
+            </li>
+            <li>
+                <span>Subcribe</span>
+                <button data-coins="200" onclick="completeTask(this, 'https://youtube.com/@redhathackers-g6e?si=Zsve4uC1neV-GYzw')">Task</button>
+            </li>
+            <li>
+                <span>Subcribe</span>
+                <button data-coins="200" onclick="completeTask(this, 'https://youtube.com/@divinefashion1?si=wWUwrqHSTQsjA5OR')">Task</button>
+            </li>
+            <li>
+                <span>Subcribe</span>
+                <button data-coins="200" onclick="completeTask(this, 'https://youtube.com/@comedyhouseofficia?si=bouD0d8DOGz9RWZb')">Task</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let score = 0;
+        let totalCoins = 0;
+
+        // Update total coins display
+        function updateTotalCoinsDisplay() {
+            document.getElementById("totalCoinsDisplay").innerText = "Total Coins: " + totalCoins;
+        }
+
+        document.getElementById("tapButton").addEventListener("click", function() {
+            score++;
+            totalCoins++;
+            updateTotalCoinsDisplay();
+            document.getElementById("score").innerText = "Score: " + score;
+            sendScoreToTelegram(score);
+        });
+
+        function completeTask(button, taskUrl) {
+            const coins = parseInt(button.getAttribute('data-coins'));
+            totalCoins += coins;
+            updateTotalCoinsDisplay();
+            score += coins;
+            document.getElementById("score").innerText = "Score: " + score;
+            sendScoreToTelegram(score);
+            window.location.href = taskUrl;
+        }
+
+        function sendScoreToTelegram(score) {
+            const botToken = '7479207045:AAENz18tqQXoA8kWie6hYN0qPiPb0MBDhHQ';
+            const chatId = 'YOUR_CHAT_ID';
+            const message = `New score: ${score}`;
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.ok) {
+                        console.error('Error sending message:', data.description);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        document.getElementById("showGame").addEventListener("click", function() {
+            document.getElementById("gameSection").classList.remove("hidden");
+            document.getElementById("gameSection").classList.add("visible");
+            document.getElementById("taskSection").classList.remove("visible");
+            document.getElementById("taskSection").classList.add("hidden");
+        });
+
+        document.getElementById("showTasks").addEventListener("click", function() {
+            document.getElementById("taskSection").classList.remove("hidden");
+            document.getElementById("taskSection").classList.add("visible");
+            document.getElementById("gameSection").classList.remove("visible");
+            document.getElementById("gameSection").classList.add("hidden");
+        });
+
+        updateTotalCoinsDisplay();
+    </script>
+</body>
+</html>
